@@ -1,0 +1,108 @@
+services:
+  mysql-clientes:
+    image: mysql:8.0
+    container_name: mysql-clientes
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: clientes_db
+      MYSQL_USER: user_clientes
+      MYSQL_PASSWORD: clientes123
+    ports:
+      - "33070:3306"
+    volumes:
+      - mysql_clientes_data:/var/lib/mysql
+    networks:
+      - microservices-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres-pedidos:
+    image: postgres:15
+    container_name: postgres-pedidos
+    environment:
+      POSTGRES_DB: pedidos_db
+      POSTGRES_USER: user_pedidos
+      POSTGRES_PASSWORD: pedidos123
+    ports:
+      - "54320:5432"
+    volumes:
+      - postgres_pedidos_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user_pedidos -d pedidos_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "56720:5672"
+      - "15670:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    networks:
+      - microservices-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  clientes-service:
+    build: ./clientes-service
+    container_name: clientes-service
+    ports:
+      - "8001:8001"
+    environment:
+      DATABASE_URL: "mysql+pymysql://user_clientes:clientes123@mysql-clientes:3306/clientes_db"
+      RABBITMQ_URL: "amqp://admin:admin123@rabbitmq:5672/"
+    depends_on:
+      mysql-clientes:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+    volumes:
+      - ./clientes-service:/app
+    restart: unless-stopped
+
+  pedidos-service:
+    build: ./pedidos-service
+    container_name: pedidos-service
+    ports:
+      - "8002:8002"
+    environment:
+      DATABASE_URL: "postgresql://user_pedidos:pedidos123@postgres-pedidos:5432/pedidos_db"
+      RABBITMQ_URL: "amqp://admin:admin123@rabbitmq:5672/"
+      CLIENTES_SERVICE_URL: "http://clientes-service:8001"
+    depends_on:
+      postgres-pedidos:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      clientes-service:
+        condition: service_started
+    networks:
+      - microservices-network
+    volumes:
+      - ./pedidos-service:/app
+    restart: unless-stopped
+
+networks:
+  microservices-network:
+    driver: bridge
+
+volumes:
+  mysql_clientes_data:
+  postgres_pedidos_data:
