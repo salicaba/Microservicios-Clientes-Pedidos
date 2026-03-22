@@ -21,6 +21,11 @@
             border-bottom: 3px solid #3498db;
             padding-bottom: 10px;
         }
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
         .container {
             background: white;
             padding: 30px;
@@ -44,4 +49,675 @@
             margin: 10px 0;
         }
         .endpoint strong {
-            color:
+            color: #2980b9;
+        }
+        .method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background: #61affe; color: white; }
+        .post { background: #49cc90; color: white; }
+        .put { background: #fca130; color: white; }
+        .delete { background: #f93e3e; color: white; }
+        .patch { background: #50e3c2; color: white; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .portada {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 2px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        /* Estilos para los logos */
+        .logos-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .logo-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .logo-item img {
+            max-width: 120px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-item p {
+            font-size: 11px;
+            margin-top: 10px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        /* Estilo para los placeholders (por si no cargan las imágenes) */
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        
+        /* Estilos para impresión */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .code-block {
+                background: #f4f4f4;
+                color: #333;
+                border: 1px solid #ddd;
+            }
+            .logo-item img {
+                max-width: 80px;
+            }
+            .logo-item p {
+                font-size: 9px;
+            }
+            .logo-placeholder {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .logos-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .logo-item img {
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+            <!-- PORTADA CON LOGOS -->
+<div class="portada">
+    <div class="logos-container">
+        <div class="logo-item">
+            <img src="imagenes/LogoFacu.png" 
+                 alt="Logo FACU" 
+                 onerror="this.parentElement.innerHTML='<div class=\'logo-placeholder\'>FACU</div>'">
+            <p>Facultad de Contaduría y Administración</p>
+        </div>
+        <div class="logo-item">
+            <img src="imagenes/LogoUnach.png" 
+                 alt="Logo UNACH" 
+                 onerror="this.parentElement.innerHTML='<div class=\'logo-placeholder\'>UNACH</div>'">
+            <p>Universidad Autónoma de Chiapas</p>
+        </div>
+    </div>
+    
+    <h1>Universidad Autónoma de Chiapas</h1>
+    <h3>Facultad de Contaduría y Administración C-I</h3>
+    <h4>Arquitectura Orientada a Servicios</h4>
+    
+    <h2 style="border: none; margin-top: 40px;">Actividad 3.1: Microservicios Clientes & Pedidos</h2>
+    
+    <p><strong>Materia:</strong> Taller de Desarrollo 4</p>
+    <p><strong>Alumno:</strong> Salinas Caballero Emmanuel</p>
+    <p><strong>Carrera:</strong> Licenciatura en Ingeniería en Desarrollo y Tecnologías de Software</p>
+    <p><strong>Semestre:</strong> 6° | <strong>Grupo:</strong> M</p>
+    <p><strong>Docente:</strong> Gutiérrez Alfaro Luis</p>
+    
+    <p><strong>Tuxtla Gutiérrez, Chiapas. Febrero 2026</strong></p>
+</div>
+
+    <!-- Índice -->
+    <h2>Índice</h2>
+    <ul>
+        <li><a href="#introduccion">1. Introducción</a></li>
+        <li><a href="#objetivos">2. Objetivos</a></li>
+        <li><a href="#arquitectura">3. Arquitectura del Sistema</a></li>
+        <li><a href="#procedimiento">4. Procedimiento de Implementación</a></li>
+        <li><a href="#endpoints">5. Endpoints de la API</a></li>
+        <li><a href="#comunicacion">6. Comunicación entre Servicios</a></li>
+        <li><a href="#ejecucion">7. Instalación y Ejecución</a></li>
+        <li><a href="#pruebas">8. Pruebas Realizadas</a></li>
+        <li><a href="#resultados">9. Resultados</a></li>
+        <li><a href="#conclusiones">10. Conclusiones</a></li>
+        <li><a href="#github">11. Repositorio GitHub</a></li>
+    </ul>
+
+    <!-- 1. Introducción -->
+    <h2 id="introduccion">1. Introducción</h2>
+    <p>El presente documento describe el procedimiento completo para la implementación de un sistema basado en microservicios para la gestión de clientes y pedidos. El proyecto fue desarrollado como parte de la Actividad 3.1 de la materia Taller de Desarrollo 4, implementando una arquitectura hexagonal que separa claramente las capas de dominio, aplicación e infraestructura.</p>
+    
+    <p>Los microservicios desarrollados son:</p>
+    <ul>
+        <li><strong>Microservicio de Clientes:</strong> Gestiona el CRUD completo de clientes utilizando MySQL como base de datos.</li>
+        <li><strong>Microservicio de Pedidos:</strong> Gestiona el CRUD completo de pedidos utilizando PostgreSQL como base de datos.</li>
+    </ul>
+    
+    <p>La comunicación entre servicios se realiza a través de HTTP para validación de clientes y mediante RabbitMQ para mensajería asíncrona de eventos.</p>
+
+    <!-- 2. Objetivos -->
+    <h2 id="objetivos">2. Objetivos</h2>
+    <h3>2.1 Objetivo General</h3>
+    <p>Implementar un sistema de microservicios que simule la interacción entre servicios de clientes y pedidos, demostrando los principios de arquitectura orientada a servicios y comunicación asíncrona.</p>
+    
+    <h3>2.2 Objetivos Específicos</h3>
+    <ul>
+        <li>Desarrollar dos microservicios independientes con FastAPI.</li>
+        <li>Implementar CRUD completo (GET, POST, PUT, DELETE) en ambos servicios.</li>
+        <li>Utilizar bases de datos diferentes (MySQL y PostgreSQL).</li>
+        <li>Implementar comunicación HTTP entre servicios.</li>
+        <li>Configurar RabbitMQ para mensajería asíncrona.</li>
+        <li>Aplicar arquitectura hexagonal (Domain, Application, Infrastructure).</li>
+        <li>Contenerizar todos los servicios con Docker Compose.</li>
+    </ul>
+
+    <!-- 3. Arquitectura del Sistema -->
+    <h2 id="arquitectura">3. Arquitectura del Sistema</h2>
+    
+    <h3>3.1 Diagrama de Arquitectura</h3>
+    <div class="code-block">
+    ┌─────────────────────────────────────────────────────────┐
+    │                    Docker Compose                       │
+    │  ┌─────────────────┐    ┌─────────────────────────┐    │
+    │  │  Clientes API   │    │     RabbitMQ            │    │
+    │  │   (Port 8001)   │◄──►│   (Port 15670)          │    │
+    │  └────────┬────────┘    └─────────────────────────┘    │
+    │           │                         ▲                  │
+    │           ▼                         │                  │
+    │  ┌─────────────────┐    ┌───────────┴───────────┐    │
+    │  │     MySQL       │    │    Pedidos API        │    │
+    │  │   (Port 33070)  │    │    (Port 8002)        │    │
+    │  └─────────────────┘    └───────────┬───────────┘    │
+    │                                     │                  │
+    │                                     ▼                  │
+    │                          ┌─────────────────────────┐   │
+    │                          │     PostgreSQL          │   │
+    │                          │    (Port 54320)         │   │
+    │                          └─────────────────────────┘   │
+    └─────────────────────────────────────────────────────────┘
+    </div>
+    
+    <h3>3.2 Estructura Hexagonal</h3>
+    <p>Cada microservicio sigue la arquitectura hexagonal con tres capas principales:</p>
+    <ul>
+        <li><strong>Domain:</strong> Contiene las entidades y repositorios abstractos.</li>
+        <li><strong>Application:</strong> Implementa la lógica de negocio y servicios.</li>
+        <li><strong>Infrastructure:</strong> Contiene la implementación concreta de bases de datos, API y mensajería.</li>
+    </ul>
+    
+    <div class="code-block">
+    microservicios-clientes-pedidos/
+    ├── clientes-service/
+    │   ├── domain/              # Entidades y repositorios
+    │   ├── application/         # Lógica de negocio
+    │   └── infrastructure/      # API, DB, RabbitMQ
+    ├── pedidos-service/
+    │   ├── domain/
+    │   ├── application/
+    │   └── infrastructure/
+    ├── docker-compose.yml
+    └── README.md
+    </div>
+    
+    <h3>3.3 Tecnologías Utilizadas</h3>
+    <table>
+        <thead>
+            <tr><th>Tecnología</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>FastAPI</td><td>Framework web para desarrollo de APIs RESTful</td></tr>
+            <tr><td>Python 3.11</td><td>Lenguaje de programación principal</td></tr>
+            <tr><td>MySQL</td><td>Base de datos para clientes (puerto 33070)</td></tr>
+            <tr><td>PostgreSQL</td><td>Base de datos para pedidos (puerto 54320)</td></tr>
+            <tr><td>RabbitMQ</td><td>Sistema de mensajería (puerto 15670)</td></tr>
+            <tr><td>SQLAlchemy</td><td>ORM para interacción con bases de datos</td></tr>
+            <tr><td>Docker Compose</td><td>Orquestación de contenedores</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 4. Procedimiento de Implementación -->
+    <h2 id="procedimiento">4. Procedimiento de Implementación</h2>
+    
+    <h3>4.1 Creación de la Estructura del Proyecto</h3>
+    <div class="code-block">
+    # Crear carpeta principal
+    mkdir microservicios-clientes-pedidos
+    cd microservicios-clientes-pedidos
+    
+    # Crear estructura hexagonal
+    mkdir -p clientes-service/{domain,application,infrastructure/{api,db,message_bus}}
+    mkdir -p pedidos-service/{domain,application,infrastructure/{api,db,message_bus}}
+    </div>
+    
+    <h3>4.2 Configuración de Docker Compose</h3>
+    <p>Se creó el archivo docker-compose.yml para orquestar los 5 servicios:</p>
+    <div class="code-block">
+services:
+  mysql-clientes:
+    image: mysql:8.0
+    ports:
+      - "33070:3306"
+    environment:
+      MYSQL_DATABASE: clientes_db
+      MYSQL_USER: user_clientes
+      MYSQL_PASSWORD: clientes123
+
+  postgres-pedidos:
+    image: postgres:15
+    ports:
+      - "54320:5432"
+    environment:
+      POSTGRES_DB: pedidos_db
+      POSTGRES_USER: user_pedidos
+      POSTGRES_PASSWORD: pedidos123
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "56720:5672"
+      - "15670:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+
+  clientes-service:
+    build: ./clientes-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      - mysql-clientes
+      - rabbitmq
+
+  pedidos-service:
+    build: ./pedidos-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - postgres-pedidos
+      - rabbitmq
+      - clientes-service
+    </div>
+
+    <h3>4.3 Implementación del Microservicio de Clientes</h3>
+    <p>Se implementaron los siguientes endpoints con CRUD completo:</p>
+    <div class="code-block">
+# POST /clientes - Crear cliente
+@app.post("/clientes", response_model=ClienteResponse)
+async def crear_cliente(cliente: ClienteCreate, service: ClienteService):
+    nuevo_cliente = await service.crear_cliente(...)
+    return nuevo_cliente
+
+# GET /clientes - Listar clientes
+@app.get("/clientes", response_model=List[ClienteResponse])
+async def listar_clientes(service: ClienteService):
+    return await service.listar_clientes()
+
+# GET /clientes/{id} - Obtener cliente
+@app.get("/clientes/{cliente_id}", response_model=ClienteResponse)
+async def obtener_cliente(cliente_id: int, service: ClienteService):
+    return await service.obtener_cliente(cliente_id)
+
+# PUT /clientes/{id} - Actualizar cliente
+@app.put("/clientes/{cliente_id}", response_model=ClienteResponse)
+async def actualizar_cliente(cliente_id: int, cliente: ClienteCreate, service: ClienteService):
+    return await service.actualizar_cliente(cliente_id, ...)
+
+# DELETE /clientes/{id} - Eliminar cliente
+@app.delete("/clientes/{cliente_id}")
+async def eliminar_cliente(cliente_id: int, service: ClienteService):
+    return await service.eliminar_cliente(cliente_id)
+    </div>
+
+    <h3>4.4 Implementación del Microservicio de Pedidos</h3>
+    <p>Se implementaron los siguientes endpoints con CRUD completo:</p>
+    <div class="code-block">
+# POST /pedidos - Crear pedido (valida cliente vía HTTP)
+@app.post("/pedidos", response_model=PedidoResponse)
+async def crear_pedido(pedido: PedidoCreate, service: PedidoService):
+    nuevo_pedido = await service.crear_pedido(...)
+    return nuevo_pedido
+
+# GET /pedidos - Listar todos los pedidos
+@app.get("/pedidos", response_model=List[PedidoResponse])
+async def listar_pedidos(service: PedidoService):
+    return await service.listar_todos_pedidos()
+
+# GET /pedidos/{id} - Obtener pedido
+@app.get("/pedidos/{pedido_id}", response_model=PedidoResponse)
+async def obtener_pedido(pedido_id: int, service: PedidoService):
+    return await service.obtener_pedido(pedido_id)
+
+# GET /clientes/{id}/pedidos - Listar pedidos de un cliente
+@app.get("/clientes/{cliente_id}/pedidos", response_model=List[PedidoResponse])
+async def listar_pedidos_por_cliente(cliente_id: int, service: PedidoService):
+    return await service.listar_pedidos_cliente(cliente_id)
+
+# PUT /pedidos/{id} - Actualizar pedido
+@app.put("/pedidos/{pedido_id}", response_model=PedidoResponse)
+async def actualizar_pedido(pedido_id: int, pedido: PedidoCreate, service: PedidoService):
+    return await service.actualizar_pedido_completo(...)
+
+# DELETE /pedidos/{id} - Eliminar pedido
+@app.delete("/pedidos/{pedido_id}", response_model=dict)
+async def eliminar_pedido(pedido_id: int, service: PedidoService):
+    return await service.eliminar_pedido(pedido_id)
+    </div>
+
+    <h3>4.5 Comunicación HTTP entre Servicios</h3>
+    <div class="code-block">
+async def _validar_cliente(self, cliente_id: int) -> bool:
+    """Valida que el cliente exista llamando al microservicio de clientes"""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(
+            f"{self.clientes_service_url}/clientes/{cliente_id}"
+        )
+        return response.status_code == 200
+    </div>
+
+    <h3>4.6 Configuración de RabbitMQ</h3>
+    <p><strong>Productor (Clientes):</strong></p>
+    <div class="code-block">
+def publish_event(self, event_type: str, data: Dict):
+    message = {'event_type': event_type, 'data': data}
+    self.channel.basic_publish(
+        exchange='',
+        routing_key='clientes_eventos',
+        body=json.dumps(message)
+    )
+    </div>
+    
+    <p><strong>Consumidor (Pedidos):</strong></p>
+    <div class="code-block">
+def _callback(self, ch, method, properties, body):
+    event = json.loads(body)
+    self.callback(event)
+    ch.basic_ack(delivery_tag=method.delivery_tag)
+    </div>
+
+    <!-- 5. Endpoints de la API -->
+    <h2 id="endpoints">5. Endpoints de la API</h2>
+    
+    <h3>5.1 Microservicio de Clientes (http://localhost:8001)</h3>
+    <div class="endpoint">
+        <span class="method get">GET</span> <strong>/clientes</strong> - Listar todos los clientes
+    </div>
+    <div class="endpoint">
+        <span class="method post">POST</span> <strong>/clientes</strong> - Crear un nuevo cliente
+    </div>
+    <div class="endpoint">
+        <span class="method get">GET</span> <strong>/clientes/{id}</strong> - Obtener un cliente por ID
+    </div>
+    <div class="endpoint">
+        <span class="method put">PUT</span> <strong>/clientes/{id}</strong> - Actualizar un cliente completo
+    </div>
+    <div class="endpoint">
+        <span class="method delete">DELETE</span> <strong>/clientes/{id}</strong> - Eliminar un cliente
+    </div>
+    
+    <h3>5.2 Microservicio de Pedidos (http://localhost:8002)</h3>
+    <div class="endpoint">
+        <span class="method get">GET</span> <strong>/pedidos</strong> - Listar todos los pedidos
+    </div>
+    <div class="endpoint">
+        <span class="method post">POST</span> <strong>/pedidos</strong> - Crear un nuevo pedido
+    </div>
+    <div class="endpoint">
+        <span class="method get">GET</span> <strong>/pedidos/{id}</strong> - Obtener un pedido por ID
+    </div>
+    <div class="endpoint">
+        <span class="method put">PUT</span> <strong>/pedidos/{id}</strong> - Actualizar un pedido completo
+    </div>
+    <div class="endpoint">
+        <span class="method delete">DELETE</span> <strong>/pedidos/{id}</strong> - Eliminar un pedido
+    </div>
+    <div class="endpoint">
+        <span class="method get">GET</span> <strong>/clientes/{id}/pedidos</strong> - Listar pedidos de un cliente específico
+    </div>
+
+    <!-- 6. Comunicación entre Servicios -->
+    <h2 id="comunicacion">6. Comunicación entre Servicios</h2>
+    
+    <h3>6.1 Comunicación Síncrona (HTTP)</h3>
+    <p>El microservicio de Pedidos realiza una petición HTTP al microservicio de Clientes para validar que el cliente existe antes de crear un pedido:</p>
+    <div class="code-block">
+POST /pedidos → Validar cliente → GET /clientes/{id} → Si existe → Crear pedido
+    </div>
+    
+    <h3>6.2 Comunicación Asíncrona (RabbitMQ)</h3>
+    <p>Eventos publicados por Clientes y consumidos por Pedidos:</p>
+    <ul>
+        <li><strong>CLIENTE_CREADO:</strong> Cuando se crea un nuevo cliente</li>
+        <li><strong>CLIENTE_ACTUALIZADO:</strong> Cuando se actualiza un cliente</li>
+        <li><strong>CLIENTE_ELIMINADO:</strong> Cuando se elimina un cliente</li>
+    </ul>
+
+    <!-- 7. Instalación y Ejecución -->
+    <h2 id="ejecucion">7. Instalación y Ejecución</h2>
+    
+    <h3>7.1 Requisitos Previos</h3>
+    <ul>
+        <li>Docker Desktop (Windows) o Docker Engine (Linux/Mac)</li>
+        <li>WSL2 (para usuarios de Windows)</li>
+        <li>Git</li>
+    </ul>
+    
+    <h3>7.2 Pasos para ejecutar el proyecto</h3>
+    <div class="code-block">
+# Clonar el repositorio
+git clone https://github.com/salicaba/Microservicios-Clientes-Pedidos.git
+cd Microservicios-Clientes-Pedidos
+
+# Levantar todos los servicios
+docker-compose up -d
+
+# Verificar que todos los contenedores están funcionando
+docker-compose ps
+
+# Ver logs en tiempo real
+docker-compose logs -f
+
+# Detener todos los servicios
+docker-compose down
+    </div>
+    
+    <h3>7.3 Acceso a los servicios</h3>
+    <ul>
+        <li><strong>Clientes API:</strong> <a href="http://localhost:8001/docs">http://localhost:8001/docs</a></li>
+        <li><strong>Pedidos API:</strong> <a href="http://localhost:8002/docs">http://localhost:8002/docs</a></li>
+        <li><strong>RabbitMQ Management:</strong> <a href="http://localhost:15670">http://localhost:15670</a> (admin/admin123)</li>
+    </ul>
+
+    <!-- 8. Pruebas Realizadas -->
+    <h2 id="pruebas">8. Pruebas Realizadas</h2>
+    
+    <h3>8.1 Prueba de CRUD - Clientes</h3>
+    <div class="code-block">
+# POST - Crear cliente
+curl -X POST http://localhost:8001/clientes \
+  -H "Content-Type: application/json" \
+  -d '{"nombre": "Juan Pérez", "email": "juan@email.com", "telefono": "555-1234"}'
+
+# GET - Listar todos los clientes
+curl http://localhost:8001/clientes
+
+# GET - Obtener cliente específico
+curl http://localhost:8001/clientes/1
+
+# PUT - Actualizar cliente
+curl -X PUT http://localhost:8001/clientes/1 \
+  -H "Content-Type: application/json" \
+  -d '{"nombre": "Juan Actualizado", "email": "juan.actualizado@email.com", "telefono": "555-9999"}'
+
+# DELETE - Eliminar cliente
+curl -X DELETE http://localhost:8001/clientes/2
+    </div>
+    
+    <h3>8.2 Prueba de CRUD - Pedidos</h3>
+    <div class="code-block">
+# POST - Crear pedido
+curl -X POST http://localhost:8002/pedidos \
+  -H "Content-Type: application/json" \
+  -d '{"cliente_id": 1, "producto": "Laptop", "cantidad": 1, "total": 999.99}'
+
+# GET - Listar todos los pedidos
+curl http://localhost:8002/pedidos
+
+# GET - Obtener pedido específico
+curl http://localhost:8002/pedidos/1
+
+# GET - Listar pedidos de un cliente
+curl http://localhost:8002/clientes/1/pedidos
+
+# PUT - Actualizar pedido
+curl -X PUT http://localhost:8002/pedidos/1 \
+  -H "Content-Type: application/json" \
+  -d '{"cliente_id": 1, "producto": "Laptop Pro", "cantidad": 2, "total": 1999.98}'
+
+# DELETE - Eliminar pedido
+curl -X DELETE http://localhost:8002/pedidos/1
+    </div>
+    
+    <h3>8.3 Prueba de Comunicación entre Servicios</h3>
+    <div class="code-block">
+# Crear pedido con cliente existente (éxito)
+curl -X POST http://localhost:8002/pedidos \
+  -H "Content-Type: application/json" \
+  -d '{"cliente_id": 1, "producto": "Mouse", "cantidad": 1, "total": 29.99}'
+
+# Intentar crear pedido con cliente inexistente (error 404)
+curl -X POST http://localhost:8002/pedidos \
+  -H "Content-Type: application/json" \
+  -d '{"cliente_id": 999, "producto": "Tablet", "cantidad": 1, "total": 299.99}'
+    </div>
+
+    <!-- 9. Resultados -->
+    <h2 id="resultados">9. Resultados</h2>
+    
+    <h3>9.1 Endpoints Verificados</h3>
+    <table>
+        <thead>
+            <tr><th>Servicio</th><th>Método</th><th>Endpoint</th><th>Estado</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Clientes</td><td>GET</td><td>/clientes</td><td>✓ Funcionando</td></tr>
+            <tr><td>Clientes</td><td>POST</td><td>/clientes</td><td>✓ Funcionando</td></tr>
+            <tr><td>Clientes</td><td>GET</td><td>/clientes/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Clientes</td><td>PUT</td><td>/clientes/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Clientes</td><td>DELETE</td><td>/clientes/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>GET</td><td>/pedidos</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>POST</td><td>/pedidos</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>GET</td><td>/pedidos/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>PUT</td><td>/pedidos/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>DELETE</td><td>/pedidos/{id}</td><td>✓ Funcionando</td></tr>
+            <tr><td>Pedidos</td><td>GET</td><td>/clientes/{id}/pedidos</td><td>✓ Funcionando</td></tr>
+        </tbody>
+    </table>
+    
+    <h3>9.2 Comunicación Verificada</h3>
+    <ul>
+        <li>✓ HTTP entre pedidos y clientes para validación</li>
+        <li>✓ RabbitMQ: Eventos publicados al crear/actualizar/eliminar clientes</li>
+        <li>✓ RabbitMQ: Eventos consumidos por el servicio de pedidos</li>
+    </ul>
+
+    <!-- 10. Conclusiones -->
+    <h2 id="conclusiones">10. Conclusiones</h2>
+    <p>El desarrollo de este proyecto permitió:</p>
+    <ol>
+        <li>Implementar exitosamente dos microservicios independientes con FastAPI.</li>
+        <li>Aplicar arquitectura hexagonal separando claramente las capas de dominio, aplicación e infraestructura.</li>
+        <li>Configurar dos bases de datos diferentes (MySQL y PostgreSQL) para cada microservicio.</li>
+        <li>Establecer comunicación HTTP entre servicios para validación de datos.</li>
+        <li>Implementar mensajería asíncrona con RabbitMQ para eventos.</li>
+        <li>Contenerizar todos los servicios con Docker Compose.</li>
+        <li>Documentar completamente el proyecto con Swagger.</li>
+    </ol>
+    
+    <h3>Lecciones Aprendidas</h3>
+    <ul>
+        <li>La arquitectura hexagonal facilita el mantenimiento y la escalabilidad.</li>
+        <li>Docker Compose simplifica la orquestación de múltiples servicios.</li>
+        <li>La comunicación asíncrona mediante RabbitMQ desacopla los servicios.</li>
+        <li>La validación de datos entre servicios mejora la integridad del sistema.</li>
+    </ul>
+
+    <!-- 11. Repositorio GitHub -->
+    <h2 id="github">11. Repositorio GitHub</h2>
+    <p>El código fuente completo del proyecto está disponible en GitHub:</p>
+    <div class="code-block">
+https://github.com/salicaba/Microservicios-Clientes-Pedidos.git
+    </div>
+    
+    <h3>Estructura del Repositorio</h3>
+    <div class="code-block">
+Microservicios-Clientes-Pedidos/
+├── clientes-service/          # Microservicio de Clientes
+│   ├── domain/                # Entidades y repositorios abstractos
+│   ├── application/           # Lógica de negocio
+│   └── infrastructure/        # Implementación concreta
+├── pedidos-service/           # Microservicio de Pedidos
+│   ├── domain/                # Entidades y repositorios abstractos
+│   ├── application/           # Lógica de negocio
+│   └── infrastructure/        # Implementación concreta
+├── docker-compose.yml         # Orquestación de servicios
+├── README.md                  # Documentación del proyecto
+└── .gitignore                 # Archivos ignorados por git
+    </div>
+
+    <footer>
+        <p>Universidad Autónoma de Chiapas - Facultad de Contaduría y Administración C-I</p>
+        <p>Taller de Desarrollo 4 - Actividad 3.1: Microservicios Clientes & Pedidos</p>
+        <p>Salinas Caballero Emmanuel - Febrero 2026</p>
+    </footer>
+</div>
+</body>
+</html>
